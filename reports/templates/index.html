@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Главная{% endblock title %}
+{% block header %}Главная{% endblock header %}
+{% block content %}
+<main>
+    <div class="container">
+        <div class="mi" onclick="location.href='/storages/';">
+            Склад
+        </div>
+        <div class="mi" onclick="location.href='/technics/';">
+            Техника
+        </div>
+        <div class="mi" onclick="location.href='/hist/';">
+            Гистограмма
+        </div>
+    </div>
+</main>
+{% endblock content %}

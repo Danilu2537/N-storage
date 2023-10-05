@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Техника{% endblock title %}
+{% block header %}Техника{% endblock header %}
+{% block content %}
+<main>
+    <form class="sidebar" action="/technics">
+        <button onclick="toggle()" type="button">Отметить все</button>
+        <br>
+        {% for technic in technics %}
+        <input type="checkbox" name="id" value="{{technic.id}}">
+        <label for="{{technic.id}}">{{technic.model}}</label>
+        <br>
+        {% endfor %}
+        <input type="submit"  value="Отобразить">
+    </form>
+    <div class="table">
+    {% for table in tables %}
+    {{table | safe}}
+    {% endfor %}
+    </div>
+</main>
+<script>
+    function toggle(source) {
+        let checkboxes = document.getElementsByName('id');
+        for(let i=0, n=checkboxes.length;i<n;i++) {
+          checkboxes[i].checked = true;
+        }
+      }
+</script>
+{% endblock content %}

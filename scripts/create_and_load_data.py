@@ -70,7 +70,7 @@ def load_technics() -> list[int]:
             'model': 'storages.technic',
             'fields': {
                 'id': fake.unique.pyint(),
-                'model': fake.word(),
+                'model': fake.unique.license_plate(),
                 'manufacturer': fake.company(),
                 'country': fake.country(),
                 'price': fake.pyint() * 100,

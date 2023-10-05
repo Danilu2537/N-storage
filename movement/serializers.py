@@ -26,17 +26,16 @@ class DispatchListSerializer(serializers.ModelSerializer):
 class DispatchSerializer(serializers.ModelSerializer):
     def create(self, validated_data: dict) -> Dispatch:
         with transaction.atomic():
-            if not validated_data['employee']:
-                validated_data['employee'] = Employee.objects.get(
-                    storage=validated_data['storage']
-                ).id
+            validated_data['employee'] = Employee.objects.get(
+                storage=validated_data['storage']
+            )  # Сотрудник привязан к складу
             units = Units.objects.get(
                 technic=validated_data['technic'], storage=validated_data['storage']
-            )
+            )  # Получаем количество единиц техники
             if not units or units.count < validated_data['count']:
                 raise ValueError(
                     'Такое количество единиц техники и склада не существует'
-                )
+                )  # Если нет количества единиц техники или склада
             units.count -= validated_data['count']
             dispatch = super().create(validated_data)
             units.save()
@@ -44,7 +43,7 @@ class DispatchSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Dispatch
-        fields = '__all__'
+        exclude = ('employee',)
 
 
 class ReceiptListSerializer(serializers.ModelSerializer):
@@ -59,9 +58,14 @@ class ReceiptListSerializer(serializers.ModelSerializer):
 class ReceiptSerializer(serializers.ModelSerializer):
     def create(self, validated_data: dict) -> Receipt:
         with transaction.atomic():
+            validated_data['employee'] = Employee.objects.get(
+                storage=validated_data['storage']
+            )  # Сотрудник привязан к складу
             units = Units.objects.get_or_create(
                 technic=validated_data['technic'], storage=validated_data['storage']
-            )[0]
+            )[
+                0
+            ]  # Проверяем количество единиц техники, если нет - создаем
             units.count += validated_data['count']
             receipt = super().create(validated_data)
             units.save()
@@ -69,4 +73,4 @@ class ReceiptSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Receipt
-        fields = '__all__'
+        exclude = ('employee',)
