@@ -30,6 +30,7 @@ class Technic(models.Model):
     id = models.IntegerField(primary_key=True, unique=True)
     model = models.CharField(max_length=100)
     manufacturer = models.CharField(max_length=100)
+    country = models.CharField(max_length=100)
     price = models.PositiveIntegerField()
 
     class Meta:
