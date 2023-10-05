@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Склады{% endblock title %}
+{% block header %}Склады{% endblock header %}
+{% block content %}
+<main>
+    <form class="sidebar" action="/storages">
+        {% for storage in storages %}
+        <input type="checkbox" name="id" value="{{storage.id}}">
+        <label for="{{storage.id}}">{{storage.title}}</label>
+        <br>
+        {% endfor %}
+        <input type="submit"  value="Отобразить">
+    </form>
+    <div class="table">
+    {% for table in tables %}
+    {{table | safe}}
+    {% endfor %}
+    </div>
+</main>
+{% endblock content %}

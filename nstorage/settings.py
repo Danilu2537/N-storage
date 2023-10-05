@@ -41,7 +41,7 @@ ROOT_URLCONF = 'nstorage.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['reports/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -86,5 +86,7 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = 'static/'
+
+STATICFILES_DIRS = (('reports/static'),)
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

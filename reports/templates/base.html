@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Default title{% endblock title %}</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <header>
+        <a class="main-title" href="/">{% block header %}Default header{% endblock header %}</a>
+        <a href="/storages">Отчет по складам</a>
+        <a href="/technics">Отчет по технике</a>
+        <a href="/hist">Гистограмма</a>
+    </header>
+    {% block content %}{% endblock content %}
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Гистограмма{% endblock title %}
+{% block header %}Гистограмма{% endblock header %}
+{% block content %}
+<main>
+    <form class="sidebar" action="/hist">
+        <label for="sel">Выберите варианты отображения:</label>
+        <select name="select" id="sel">
+            {% for technic in technics %}
+            <option value="{{technic.id}}">{{technic.model}}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Отобразить">
+    </form>
+    <div class="table">
+    {{hist | safe}}
+    </div>
+</main>
+{% endblock content %}

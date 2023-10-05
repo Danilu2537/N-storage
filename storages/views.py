@@ -4,7 +4,7 @@ from rest_framework.generics import (
     RetrieveUpdateDestroyAPIView,
 )
 
-from storages.models import Storage
+from storages.models import Employee, Storage, Technic
 from storages.serializers import (
     EmployeeSerializer,
     StorageSerializer,
@@ -27,6 +27,7 @@ class StorageListView(ListAPIView):
 
 
 class StorageView(RetrieveUpdateDestroyAPIView):
+    queryset = Storage.objects.all()
     serializer_class = StorageSerializer
 
 
@@ -36,10 +37,12 @@ class TechnicCreateView(CreateAPIView):
 
 
 class TechnicListView(ListAPIView):
+    queryset = Technic.objects.all()
     serializer_class = TechnicSerializer
 
 
 class TechnicView(RetrieveUpdateDestroyAPIView):
+    queryset = Technic.objects.all()
     serializer_class = TechnicSerializer
 
 
@@ -49,8 +52,10 @@ class EmployeeCreateView(CreateAPIView):
 
 
 class EmployeeListView(ListAPIView):
+    queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
 
 
 class EmployeeView(RetrieveUpdateDestroyAPIView):
+    queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
