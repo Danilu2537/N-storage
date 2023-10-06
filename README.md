@@ -11,7 +11,7 @@
 
 Во втором приложении `movement` располагаются модели, отвечающие за логистику: `Units`, `Dispatch`, `Receipt`, отвечающие за количество техники на складах, выдаче техники и приеме соответственно.
 
-![DB schema](https://github.com/Danilu2537/N-storage/blob/main/db.png?raw=true)
+![DB schema](https://github.com/Danilu2537/N-storage/blob/main/assets/db.png?raw=true)
 
 Доступа к изменению через API количества товара нет, повлиять на это можно только через создание записи отпуска или приема товара. Про особенности работы с API можно узнать [здесь](#APIdoc)
 
@@ -95,7 +95,7 @@ docker-compose up -d
 Страницы отчетов доступны из корня приложения: \
     http://localhost/
 
-![front-reports](https://github.com/Danilu2537/N-storage/blob/main/report.png?raw=true)
+![front-reports](https://github.com/Danilu2537/N-storage/blob/main/assets/report.png?raw=true)
 
 ### <a id="APIdoc"></a>Документация API
 Документация доступна после запуска по адресам: \
