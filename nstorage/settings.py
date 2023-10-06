@@ -9,7 +9,7 @@ if ENV_PATH.is_file():
 
 SECRET_KEY = env.str('SECRET_KEY')
 
-DEBUG = env.bool('DEBUG', default=False)
+DEBUG = env.bool('DEBUG')
 
 ALLOWED_HOSTS = ['*']
 
@@ -21,7 +21,7 @@ DJANGO_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-DRF_APPS = ['rest_framework']
+DRF_APPS = ['rest_framework', 'drf_spectacular']
 LOCAL_APPS = ['storages', 'movement']
 
 INSTALLED_APPS = DJANGO_APPS + DRF_APPS + LOCAL_APPS
@@ -53,6 +53,15 @@ TEMPLATES = [
         },
     }
 ]
+
+REST_FRAMEWORK = {'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema'}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'N-storage',
+    'DESCRIPTION': 'n-storage',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+}
 
 WSGI_APPLICATION = 'nstorage.wsgi.application'
 
@@ -87,6 +96,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = (('reports/static'),)
+STATIC_ROOT = BASE_DIR.joinpath('static')
+
+STATICFILES_DIRS = ((BASE_DIR.joinpath('reports/static/')),)
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
