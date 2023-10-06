@@ -100,6 +100,6 @@ http://localhost/admin/
 
 ### <a id="APIdoc"></a>Документация API
 Документация доступна после запуска по адресам: \
-    http://localhost/schema/ \
-    http://localhost/schema/swagger-ui/ \
-    http://localhost/schema/redoc/
+    http://localhost/api/schema/ \
+    http://localhost/api/schema/swagger-ui/ \
+    http://localhost/api/schema/redoc/
